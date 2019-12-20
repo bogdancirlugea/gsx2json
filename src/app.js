@@ -3,7 +3,7 @@ var api = require('./api')
 var express = require('express')
 var path = require('path')
 var bodyParser = require('body-parser')
-
+var cors = require('cors')
 const serverless = require('serverless-http')
 
 var app = express()
@@ -13,6 +13,7 @@ var port = process.env.PORT || 5000
 const router = express.Router()
 
 app.use('/.netlify/functions/app', router)
+app.use(cors())
 
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*')
